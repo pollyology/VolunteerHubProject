@@ -9,6 +9,6 @@ A web-based platform designed to improve communication and scheduling between vo
 - MySQL (Database)
 
 ## Features
-- Volunteer sign-up and scheduling
-- Event management
-- Notifications and updates
+- Account creation for admins and volunteers
+- Managing, modifying, and scheduling events
+
