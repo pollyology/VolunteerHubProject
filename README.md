@@ -1,6 +1,7 @@
 # VolunteerHub
  
 > A Website to manage CSUS volunteer events.
+> What is good
 
 ---
  
