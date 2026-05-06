@@ -1,11 +1,24 @@
-import { Link } from "react-router-dom";
+import MButton from "./MButton";
+
 function Navbar() {
     return (
-        <nav>
-            <h2>Event App</h2> <div>
-                <Link to="/">Home</Link>
-                <Link to="/events">Events</Link> <Link to="/login">Login</Link> <Link to="/signup">Signup</Link>
-            </div> </nav>
+        <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '10px' }}>
+            
+            {/* Left Side Links */}
+            <div>
+                <MButton style={{ marginLeft: '5px' }} text="Back" linkTo="/back" />
+                <MButton text="Volunteer Hub" linkTo="/" />
+            </div> 
+            
+            {/* Right Side Links */}
+            <div>
+                <MButton text="Home" linkTo="/" />
+                <MButton text="About" linkTo="/about" /> 
+                <MButton text="Login" linkTo="/login" /> 
+            </div> 
+            
+        </nav>
     );
 }
+
 export default Navbar;
