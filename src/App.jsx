@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import LoginForm from './components/LoginForm'
 import LoginStudents from './pages/LoginStudents'
+import LoginAdmin from './pages/LoginAdmin'
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/" element={<Home />} />
         
         <Route path="/login" element={<LoginStudents />} />
+        <Route path="/admin" element={<LoginAdmin />} />
       </Routes>
 
     </ BrowserRouter>
