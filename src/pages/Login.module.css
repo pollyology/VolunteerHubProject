@@ -1,0 +1,117 @@
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    font-family: sans-serif;
+}
+
+.headerBanner {
+    background-color: #d9d9d9;
+    width: 400px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    margin-bottom: 20px;
+}
+
+.headerBanner h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: normal;
+    color: #000;
+    line-height: 1.4;
+}
+
+.loginCard {
+    background-color: #a6a6a6;
+    width: 450px;
+    padding: 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.inputGroup {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.inputGroup label {
+    width: 80px;
+    text-align: right;
+    font-size: 14px;
+    color: #000;
+}
+
+.inputGroup input {
+    flex: 1;
+    max-width: 220px;
+    padding: 8px;
+    border: none;
+    background-color: #e6e6e6;
+    outline: none;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 15px;
+}
+
+.actionBtn {
+    padding: 10px 30px;
+    border: none;
+    color: #000;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+}
+
+.btnCancel {
+    background-color: #db4844; 
+}
+
+.btnSubmit {
+    background-color: #38c759; 
+}
+
+.linkGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.linkRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.linkRow span {
+    width: 160px;
+    text-align: right;
+}
+
+.linkItem {
+    background-color: #e6e6e6;
+    border: none;
+    padding: 4px 10px;
+    color: #5c7eb5;
+    font-size: 12px;
+    text-decoration: none;
+    cursor: pointer;
+}

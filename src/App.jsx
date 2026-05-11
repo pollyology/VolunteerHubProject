@@ -9,6 +9,7 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import LoginForm from './components/LoginForm'
+import LoginStudents from './pages/LoginStudents'
 
 function App() {
 
@@ -17,11 +18,9 @@ function App() {
       <Navbar />
 
       <Routes>
-        {/* What to show on the default home page ("/") */}
         <Route path="/" element={<Home />} />
         
-        {/* What to show when the URL is "/login" */}
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/login" element={<LoginStudents />} />
       </Routes>
 
     </ BrowserRouter>
