@@ -20,8 +20,9 @@ class UserSerializer(serializers.ModelSerializer):
             "blocked_users",
             "date_joined",
             "last_login",
+            "is_staff",
         ]
-        read_only_fields = ["id", "date_joined", "last_login"]
+        read_only_fields = ["id", "date_joined", "last_login", "is_staff"]
 
 
 class UserCreateSerializer(serializers.ModelSerializer):
