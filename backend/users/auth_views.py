@@ -8,7 +8,6 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .auth_serializers import RegisterSerializer, LoginSerializer
 
 from .models import EmailVerification
-from .email_verification import send_verification_email
 from .verify_serializers import VerifyEmailSerializer, ResendVerificationSerializer
 from .email_verification import send_verification_email
 
@@ -29,7 +28,9 @@ class RegisterView(APIView):
         ser = RegisterSerializer(data=request.data)
         ser.is_valid(raise_exception=True)
         user = ser.save()
-        send_verification_email(user)
+        
+        # DISABLED FOR NOW: We don't want to actually send the email yet
+        # send_verification_email(user)
 
         return Response({"id": str(user.id)}, status=status.HTTP_201_CREATED)
 
@@ -54,9 +55,9 @@ class LoginView(APIView):
         if not user.is_active:
             return Response({"detail": "Account disabled."}, status=status.HTTP_403_FORBIDDEN)
 
-        # Enforce verification before issuing tokens (except staff)
-        if not user.is_verified_student and not user.is_staff:
-            return Response({"detail": "Email not verified."}, status=status.HTTP_403_FORBIDDEN)
+        # DISABLED FOR NOW: Let everyone log in without checking their verified status
+        # if not user.is_verified_student and not user.is_staff:
+        #     return Response({"detail": "Email not verified."}, status=status.HTTP_403_FORBIDDEN)
 
         return Response(issue_tokens(user), status=status.HTTP_200_OK)
 
