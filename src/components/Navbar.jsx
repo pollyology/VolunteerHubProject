@@ -1,22 +1,49 @@
+import { useNavigate, useLocation } from "react-router-dom";
 import MButton from "./MButton";
+import styles from "./Navbar.module.css";
+import { logout, isAuthenticated } from "../services/authService";
 
 function Navbar() {
+    const navigate = useNavigate();
+    const location = useLocation(); // This forces the Navbar to re-render when the URL changes
+
+    const isAuth = isAuthenticated();
+
+    const handleLogout = async () => {
+        await logout(); // Calls the function to clear tokens
+        navigate("/login"); // Sends the user back to the login screen
+    };
+
     return (
-        <nav style={{ display: 'flex', justifyContent: 'space-between', padding: '10px' }}>
-            
+        <nav className={styles.navbar}>
             {/* Left Side Links */}
-            <div>
-                <MButton style={{ marginLeft: '5px' }} text="Back" linkTo="/back" />
+            <div className={styles.navGroup}>
+                {/* Hide the 'Back' button if the user is logged in */}
+                {!isAuth && <MButton text="Back" linkTo="/back" />}
                 <MButton text="Volunteer Hub" linkTo="/" />
-            </div> 
-            
+            </div>
+
             {/* Right Side Links */}
-            <div>
-                <MButton text="Home" linkTo="/" />
-                <MButton text="About" linkTo="/about" /> 
-                <MButton text="Login" linkTo="/login" /> 
-            </div> 
-            
+            <div className={styles.navGroup}>
+                {isAuth ? (
+                    <>
+                        <MButton text="Events" linkTo="/events" />
+                        <MButton text="Calendar" linkTo="/calendar" />
+                        <MButton text="Notifications" linkTo="/notifications" />
+                        <MButton text="Forum" linkTo="/forum" />
+                        <MButton text="About" linkTo="/about" />
+                        <button onClick={handleLogout} className={styles.logoutBtn}>
+                            Logout
+                        </button>
+                    </>
+                ) : (
+                    <>
+                        <MButton text="Home" linkTo="/" />
+                        <MButton text="About" linkTo="/about" />
+                        <MButton text="Login" linkTo="/login" />
+                    </>
+                )}
+            </div>
         </nav>
     );
 }

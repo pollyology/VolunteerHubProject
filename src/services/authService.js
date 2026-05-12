@@ -1,85 +1,125 @@
 // ==========================================
-// Authentication Service (Template)
-// This is just a template based off tutorials.
-// Using as a placeholder before actual implementation
+// Authentication Service
+// Integrated with Django REST Framework JWT
 // ==========================================
 
+const API_URL = 'http://127.0.0.1:8000/api';
 
 // ------------------------------------------
 // LOGIN
 // ------------------------------------------
-export const login = async (email, password) => {
-  // TODO:
-  // - Send login request to backend API
-  // - Validate user credentials
-  // - Receive and store authentication token (JWT/session)
-  // - Handle login errors
+// ------------------------------------------
+// LOGIN
+// ------------------------------------------
+export const login = async (email, password, isAdminLogin = false) => {
+  const response = await fetch(`${API_URL}/auth/login/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ email, password }),
+  });
 
-  console.log("Login attempt:", email, password);
+  if (!response.ok) {
+    throw new Error('Invalid email or password');
+  }
 
-  // Placeholder response
-  return {
-    user: { email },
-    token: null
-  };
+  const data = await response.json();
+
+  localStorage.setItem('accessToken', data.access);
+  localStorage.setItem('refreshToken', data.refresh);
+
+  // Only save the staff flag if they used the admin login page
+  // AND the backend actually confirms they have staff privileges
+  if (isAdminLogin && data.is_staff) {
+    localStorage.setItem('isStaff', 'true');
+  } else {
+    // Make sure we clear any old staff flags if a regular student logs in
+    localStorage.removeItem('isStaff');
+  }
+
+  return data;
 };
-
 
 // ------------------------------------------
 // SIGNUP / REGISTER
 // ------------------------------------------
 export const signup = async (name, email, password) => {
-  // TODO:
-  // - Send signup request to backend API
-  // - Create new user account in database
-  // - Handle duplicate emails and validation
-  // - Optionally log user in after signup
+  const response = await fetch(`${API_URL}/auth/register/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    // Mapping the frontend "name" to the backend "username" expected by your API
+    body: JSON.stringify({ username: name, email, password }),
+  });
 
-  console.log("Signup attempt:", name, email, password);
+  if (!response.ok) {
+    throw new Error('Registration failed. Please check your details.');
+  }
 
-  // Placeholder response
-  return {
-    user: { name, email },
-    token: null
-  };
+  return await response.json();
 };
-
 
 // ------------------------------------------
 // LOGOUT
 // ------------------------------------------
-export const logout = () => {
-  // TODO:
-  // - Clear authentication token from storage
-  // - Notify backend (if required)
-  // - Redirect user to login page
+export const logout = async () => {
+  const access = localStorage.getItem('accessToken');
+  const refresh = localStorage.getItem('refreshToken');
 
-  console.log("User logged out");
+  // If we have the tokens, tell the backend to blacklist them
+  if (access && refresh) {
+    try {
+      await fetch(`${API_URL}/auth/logout/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${access}`
+        },
+        body: JSON.stringify({ refresh })
+      });
+    } catch (error) {
+      console.error("Backend logout request failed", error);
+    }
+  }
+
+  // Always clear local storage regardless of backend success
+  localStorage.removeItem('accessToken');
+  localStorage.removeItem('refreshToken');
+  localStorage.removeItem('isStaff');
 };
-
 
 // ------------------------------------------
 // GET CURRENT USER
 // ------------------------------------------
-export const getCurrentUser = () => {
-  // TODO:
-  // - Retrieve user info from local storage or API
-  // - Validate session/token
+export const getCurrentUser = async () => {
+  const access = localStorage.getItem('accessToken');
 
-  console.log("Fetching current user");
+  if (!access) return null;
+
+  try {
+    const response = await fetch(`${API_URL}/users/me/`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${access}`
+      }
+    });
+
+    if (response.ok) {
+      return await response.json();
+    }
+  } catch (error) {
+    console.error("Failed to fetch user profile", error);
+  }
 
   return null;
 };
-
 
 // ------------------------------------------
 // AUTH CHECK
 // ------------------------------------------
 export const isAuthenticated = () => {
-  // TODO:
-  // - Check if user has a valid session/token
-
-  console.log("Checking authentication status");
-
-  return false;
+  // A quick synchronous check to see if an access token exists
+  return !!localStorage.getItem('accessToken');
 };

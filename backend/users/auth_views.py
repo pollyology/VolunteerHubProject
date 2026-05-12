@@ -16,7 +16,11 @@ User = get_user_model()
 
 def issue_tokens(user):
     refresh = RefreshToken.for_user(user)
-    return {"refresh": str(refresh), "access": str(refresh.access_token)}
+    return {
+        "refresh": str(refresh),
+        "access": str(refresh.access_token),
+        "is_staff": user.is_staff
+    }
 
 class RegisterView(APIView):
     permission_classes = [AllowAny]
