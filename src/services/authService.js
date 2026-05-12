@@ -50,15 +50,15 @@ export const signup = async (name, email, password) => {
     headers: {
       'Content-Type': 'application/json',
     },
-    // Mapping the frontend "name" to the backend "username" expected by your API
-    body: JSON.stringify({ username: name, email, password }),
+    body: JSON.stringify({ username: name, email, password }), 
   });
 
   if (!response.ok) {
     throw new Error('Registration failed. Please check your details.');
   }
 
-  return await response.json();
+  // Once registration succeeds, automatically log them in
+  return await login(email, password);
 };
 
 // ------------------------------------------
