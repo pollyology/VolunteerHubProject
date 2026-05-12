@@ -12,6 +12,7 @@ import LoginForm from './components/LoginForm'
 import LoginStudents from './pages/LoginStudents'
 import LoginAdmin from './pages/LoginAdmin'
 import Signup from './pages/Signup'
+import Events from './pages/Events'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/login" element={<LoginStudents />} />
         <Route path="/admin" element={<LoginAdmin />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/events" element={<Events />} />
       </Routes>
 
     </ BrowserRouter>

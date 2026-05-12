@@ -6,13 +6,15 @@ function Events() {
             id: 1,
             title: "Hackathon",
             date: "May 10",
-            location: "Campus"
+            location: "Campus",
+            description: "Join us for a 24-hour coding marathon where students collaborate to create innovative projects. Open to all skill levels!"
         },
         {
             id: 2,
             title: "Career Fair",
             date: "May 15",
-            location: "Hall A"
+            location: "Hall A",
+            description: "Meet top tech companies, explore internship and job opportunities, and get career advice from industry professionals."
         }
     ]);
     return (<div className="container">

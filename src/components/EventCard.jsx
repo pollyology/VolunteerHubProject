@@ -1,17 +1,59 @@
+import "./EventCard.css";
+import { isAuthenticated } from "../services/authService";
+
 function EventCard({ event }) {
+
+    const isAuth = isAuthenticated();
+    const isAdmin = localStorage.getItem("isStaff") === "true";
+
     const handleRegister = () => {
-        // TODO: Add registration logic
         console.log("Registered for:", event.title);
     };
+
     return (
         <div className="event-card">
+
             <h3>{event.title}</h3>
-            <p>Date: {event.date}</p>
-            <p>Location: {event.location}</p>
-            <button onClick={handleRegister}>
-                Register
-            </button>
+
+            <p>
+                <strong>Date:</strong> {event.date}
+            </p>
+
+            <p>
+                <strong>Location:</strong> {event.location}
+            </p>
+
+            <p className="event-description">
+                {event.description}
+            </p>
+
+            {!isAuth ? (
+                <button className="register-btn">
+                    Login to Register
+                </button>
+            ) : isAdmin ? (
+                <div className="admin-buttons">
+
+                    <button className="edit-btn">
+                        Edit Event
+                    </button>
+
+                    <button className="delete-btn">
+                        Delete Event
+                    </button>
+
+                </div>
+            ) : (
+                <button
+                    className="register-btn"
+                    onClick={handleRegister}
+                >
+                    Register
+                </button>
+            )}
+
         </div>
     );
 }
+
 export default EventCard;
