@@ -9,7 +9,10 @@ function EventCard({ event, onDelete }) {
     const navigate = useNavigate();
 
     const handleRegister = () => {
-        console.log("Registered for:", event.title);
+
+        navigate("/register-event", {
+            state: { event }
+        });
     };
 
     return (

@@ -17,6 +17,8 @@ import CreateEvent from './pages/CreateEvent'
 import ConfirmEvent from './pages/ConfirmEvent'
 import EventCreated from './pages/EventCreated'
 import EditEvent from "./pages/EditEvent";
+import RegisterEvent from "./pages/RegisterEvent";
+import RegistrationSuccess from "./pages/RegistrationSuccess";
 
 function App() {
 
@@ -35,6 +37,8 @@ function App() {
         <Route path="/confirm-event" element={<ConfirmEvent />} />
         <Route path="/event-created" element={<EventCreated />} />
         <Route path="/edit-event" element={<EditEvent />} />
+        <Route path="/register-event" element={<RegisterEvent />} />
+        <Route path="/registration-success" element={<RegistrationSuccess />} />
       </Routes>
 
     </ BrowserRouter>
