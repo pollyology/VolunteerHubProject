@@ -1,13 +1,19 @@
 import "./EventCard.css";
 import { isAuthenticated } from "../services/authService";
+import { useNavigate } from "react-router-dom";
 
 function EventCard({ event }) {
 
+	const navigate = useNavigate();
     const isAuth = isAuthenticated();
     const isAdmin = localStorage.getItem("isStaff") === "true";
 
     const handleRegister = () => {
         console.log("Registered for:", event.title);
+    };
+
+	const handleLoginRedirect = () => {
+        navigate("/login");
     };
 
     return (
@@ -28,7 +34,10 @@ function EventCard({ event }) {
             </p>
 
             {!isAuth ? (
-                <button className="register-btn">
+                <button 
+					className="register-btn"
+					onClick={handleLoginRedirect}
+				>
                     Login to Register
                 </button>
             ) : isAdmin ? (
