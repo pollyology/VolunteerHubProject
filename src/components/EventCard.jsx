@@ -1,7 +1,7 @@
 import "./EventCard.css";
 import { isAuthenticated } from "../services/authService";
 
-function EventCard({ event }) {
+function EventCard({ event, onDelete }) {
 
     const isAuth = isAuthenticated();
     const isAdmin = localStorage.getItem("isStaff") === "true";
@@ -38,7 +38,10 @@ function EventCard({ event }) {
                         Edit Event
                     </button>
 
-                    <button className="delete-btn">
+                    <button
+                        className="delete-btn"
+                        onClick={() => onDelete(event.title)}
+                    >
                         Delete Event
                     </button>
 

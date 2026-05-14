@@ -13,6 +13,9 @@ import LoginStudents from './pages/LoginStudents'
 import LoginAdmin from './pages/LoginAdmin'
 import Signup from './pages/Signup'
 import Events from './pages/Events'
+import CreateEvent from './pages/CreateEvent'
+import ConfirmEvent from './pages/ConfirmEvent'
+import EventCreated from './pages/EventCreated'
 
 function App() {
 
@@ -27,6 +30,9 @@ function App() {
         <Route path="/admin" element={<LoginAdmin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/create-event" element={<CreateEvent />} />
+        <Route path="/confirm-event" element={<ConfirmEvent />} />
+        <Route path="/event-created" element={<EventCreated />} />
       </Routes>
 
     </ BrowserRouter>
