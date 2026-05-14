@@ -7,9 +7,19 @@ function EventCard({ event }) {
 	const navigate = useNavigate();
     const isAuth = isAuthenticated();
     const isAdmin = localStorage.getItem("isStaff") === "true";
+    const registeredEvents =
+        JSON.parse(localStorage.getItem("registeredEvents")) || [];
+
+    const isRegistered = registeredEvents.some(
+        (registeredEvent) =>
+            registeredEvent.title === event.title
+    );
 
     const handleRegister = () => {
-        console.log("Registered for:", event.title);
+
+        navigate("/register-event", {
+            state: { event }
+        });
     };
 
 	const handleLoginRedirect = () => {
@@ -43,21 +53,37 @@ function EventCard({ event }) {
             ) : isAdmin ? (
                 <div className="admin-buttons">
 
-                    <button className="edit-btn">
+                    <button
+                        className="edit-btn"
+                        onClick={() =>
+                            navigate("/edit-event", {
+                                state: { event }
+                            })
+                        }
+                    >
                         Edit Event
                     </button>
 
-                    <button className="delete-btn">
+                    <button
+                        className="delete-btn"
+                        onClick={() =>
+                            navigate("/delete-event", {
+                                state: { event }
+                            })
+                        }
+                    >
                         Delete Event
                     </button>
-
                 </div>
             ) : (
                 <button
                     className="register-btn"
                     onClick={handleRegister}
+                    disabled={isRegistered}
                 >
-                    Register
+                    {isRegistered
+                        ? "Already Registered"
+                        : "Sign Up"}
                 </button>
             )}
 

@@ -13,6 +13,17 @@ import LoginStudents from './pages/LoginStudents'
 import LoginAdmin from './pages/LoginAdmin'
 import Signup from './pages/Signup'
 import Events from './pages/Events'
+import CreateEvent from './pages/CreateEvent'
+import ConfirmEvent from './pages/ConfirmEvent'
+import EventCreated from './pages/EventCreated'
+import EditEvent from "./pages/EditEvent";
+import RegisterEvent from "./pages/RegisterEvent";
+import RegistrationSuccess from "./pages/RegistrationSuccess";
+import MyEvents from "./pages/MyEvents";
+import DeleteEvent from "./pages/DeleteEvent";
+import DeleteSuccess from "./pages/DeleteSuccess";
+import PasswordResetRequest from './pages/PasswordResetRequest'
+import PasswordResetConfirm from './pages/PasswordResetConfirm'
 
 function App() {
 
@@ -27,6 +38,17 @@ function App() {
         <Route path="/admin" element={<LoginAdmin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/create-event" element={<CreateEvent />} />
+        <Route path="/confirm-event" element={<ConfirmEvent />} />
+        <Route path="/event-created" element={<EventCreated />} />
+        <Route path="/edit-event" element={<EditEvent />} />
+        <Route path="/register-event" element={<RegisterEvent />} />
+        <Route path="/registration-success" element={<RegistrationSuccess />} />
+        <Route path="/my-events" element={<MyEvents />} />
+        <Route path="/delete-event" element={<DeleteEvent />} />
+        <Route path="/delete-success" element={<DeleteSuccess />} />
+        <Route path="/reset" element={<PasswordResetRequest />} />
+        <Route path="/reset-password" element={<PasswordResetConfirm />} />
       </Routes>
 
     </ BrowserRouter>

@@ -6,7 +6,7 @@ import { logout, isAuthenticated } from "../services/authService";
 function Navbar() {
     const navigate = useNavigate();
     const location = useLocation(); // This forces the Navbar to re-render when the URL changes
-
+    const isAdmin = localStorage.getItem("isStaff") === "true";
     const isAuth = isAuthenticated();
 
     const handleLogout = async () => {
@@ -28,6 +28,11 @@ function Navbar() {
                 {isAuth ? (
                     <>
                         <MButton text="Events" linkTo="/events" />
+
+                        {!isAdmin && (
+                            <MButton text="My Events" linkTo="/my-events" />
+                        )}
+
                         <MButton text="Calendar" linkTo="/calendar" />
                         <MButton text="Notifications" linkTo="/notifications" />
                         <MButton text="Forum" linkTo="/forum" />
@@ -39,6 +44,7 @@ function Navbar() {
                 ) : (
                     <>
                         <MButton text="Home" linkTo="/" />
+                        <MButton text="Events" linkTo="/events" />
                         <MButton text="About" linkTo="/about" />
                         <MButton text="Login" linkTo="/login" />
                     </>

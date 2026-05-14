@@ -1,0 +1,39 @@
+.my-events-page {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.my-events-container {
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.registered-event-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.back-btn {
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.unregister-btn {
+    margin-top: 15px;
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
