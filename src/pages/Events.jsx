@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import EventCard from "../components/EventCard";
 import "./Events.css";
@@ -29,12 +29,23 @@ function Events() {
     ];
 
     const storedEvents =
-        JSON.parse(localStorage.getItem("events")) || [];
+        JSON.parse(localStorage.getItem("events"));
 
-    const [events, setEvents] = useState([
-        ...defaultEvents,
-        ...storedEvents
-    ]);
+    const [events, setEvents] = useState(
+        storedEvents || defaultEvents
+    );
+
+    useEffect(() => {
+
+        if (!storedEvents) {
+
+            localStorage.setItem(
+                "events",
+                JSON.stringify(defaultEvents)
+            );
+        }
+    }, []);
+
 
     return (
         <div className="events-page">
@@ -58,12 +69,19 @@ function Events() {
 
             <div className="events-list">
 
-                {events.map((event) => (
-                    <EventCard
-                        key={event.id}
-                        event={event}
-                    />
-                ))}
+                {events.length === 0 ? (
+
+                    <h2>No events available.</h2>
+
+                ) : (
+
+                    events.map((event) => (
+                        <EventCard
+                            key={event.id}
+                            event={event}
+                        />
+                    ))
+                )}
 
             </div>
 
