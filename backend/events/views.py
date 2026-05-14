@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.db.models import Q
+from rest_framework.exceptions import PermissionDenied
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
@@ -31,7 +32,15 @@ class EventViewSet(viewsets.ModelViewSet):
         return self.queryset
 
     def get_permissions(self):
-        # DELETE is stricter: admin-only (or staff)
+        # DELETE is stricter: admin-only
         if self.action == "destroy":
             return [IsAuthenticated(), CanDeleteEvent()]
         return [perm() for perm in self.permission_classes]
+
+    def perform_create(self, serializer):
+        user = self.request.user
+
+        if not user.is_staff:
+            raise PermissionDenied("You are not allowed to create events for this organizer.")
+
+        serializer.save()
