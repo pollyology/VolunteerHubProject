@@ -19,6 +19,7 @@ import EventCreated from './pages/EventCreated'
 import EditEvent from "./pages/EditEvent";
 import RegisterEvent from "./pages/RegisterEvent";
 import RegistrationSuccess from "./pages/RegistrationSuccess";
+import MyEvents from "./pages/MyEvents";
 
 function App() {
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="/edit-event" element={<EditEvent />} />
         <Route path="/register-event" element={<RegisterEvent />} />
         <Route path="/registration-success" element={<RegistrationSuccess />} />
+        <Route path="/my-events" element={<MyEvents />} />
       </Routes>
 
     </ BrowserRouter>

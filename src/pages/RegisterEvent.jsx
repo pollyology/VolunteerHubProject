@@ -13,6 +13,20 @@ function RegisterEvent() {
         const registeredEvents =
             JSON.parse(localStorage.getItem("registeredEvents")) || [];
 
+        const alreadyRegistered = registeredEvents.some(
+            (registeredEvent) =>
+                registeredEvent.title === event.title
+        );
+
+        if (alreadyRegistered) {
+
+            alert("You are already registered for this event.");
+
+            navigate("/my-events");
+
+            return;
+        }
+
         registeredEvents.push(event);
 
         localStorage.setItem(

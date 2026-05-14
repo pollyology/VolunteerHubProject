@@ -6,6 +6,13 @@ function EventCard({ event, onDelete }) {
 
     const isAuth = isAuthenticated();
     const isAdmin = localStorage.getItem("isStaff") === "true";
+    const registeredEvents =
+        JSON.parse(localStorage.getItem("registeredEvents")) || [];
+
+    const isRegistered = registeredEvents.some(
+        (registeredEvent) =>
+            registeredEvent.title === event.title
+    );
     const navigate = useNavigate();
 
     const handleRegister = () => {
@@ -62,8 +69,11 @@ function EventCard({ event, onDelete }) {
                 <button
                     className="register-btn"
                     onClick={handleRegister}
+                    disabled={isRegistered}
                 >
-                    Register
+                    {isRegistered
+                        ? "Already Registered"
+                        : "Sign Up"}
                 </button>
             )}
 

@@ -67,6 +67,13 @@ function RegistrationSuccess() {
                     Back to Events
                 </button>
 
+                <button
+                    className="events-btn"
+                    onClick={() => navigate("/my-events")}
+                >
+                    View My Events
+                </button>
+
             </div>
 
         </div>
