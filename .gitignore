@@ -24,3 +24,21 @@ dist-ssr
 *.sw?
 db.sqlite3
 .env
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.env
+
+# Node
+node_modules/
+
+# Vite
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
