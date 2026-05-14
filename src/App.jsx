@@ -22,6 +22,8 @@ import RegistrationSuccess from "./pages/RegistrationSuccess";
 import MyEvents from "./pages/MyEvents";
 import DeleteEvent from "./pages/DeleteEvent";
 import DeleteSuccess from "./pages/DeleteSuccess";
+import PasswordResetRequest from './pages/PasswordResetRequest'
+import PasswordResetConfirm from './pages/PasswordResetConfirm'
 
 function App() {
 
@@ -45,6 +47,8 @@ function App() {
         <Route path="/my-events" element={<MyEvents />} />
         <Route path="/delete-event" element={<DeleteEvent />} />
         <Route path="/delete-success" element={<DeleteSuccess />} />
+        <Route path="/reset" element={<PasswordResetRequest />} />
+        <Route path="/reset-password" element={<PasswordResetConfirm />} />
       </Routes>
 
     </ BrowserRouter>
