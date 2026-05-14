@@ -69,3 +69,8 @@
     border-radius: 8px;
     cursor: pointer;
 }
+
+.register-btn:disabled {
+    background-color: #9ca3af;
+    cursor: not-allowed;
+}

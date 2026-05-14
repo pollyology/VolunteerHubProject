@@ -1,13 +1,25 @@
 import "./EventCard.css";
 import { isAuthenticated } from "../services/authService";
+import { useNavigate } from "react-router-dom";
 
 function EventCard({ event }) {
 
     const isAuth = isAuthenticated();
     const isAdmin = localStorage.getItem("isStaff") === "true";
+    const registeredEvents =
+        JSON.parse(localStorage.getItem("registeredEvents")) || [];
+
+    const isRegistered = registeredEvents.some(
+        (registeredEvent) =>
+            registeredEvent.title === event.title
+    );
+    const navigate = useNavigate();
 
     const handleRegister = () => {
-        console.log("Registered for:", event.title);
+
+        navigate("/register-event", {
+            state: { event }
+        });
     };
 
     return (
@@ -28,27 +40,46 @@ function EventCard({ event }) {
             </p>
 
             {!isAuth ? (
-                <button className="register-btn">
+                <button
+                    className="register-btn"
+                    onClick={() => navigate("/login")}
+                >
                     Login to Register
                 </button>
             ) : isAdmin ? (
                 <div className="admin-buttons">
 
-                    <button className="edit-btn">
+                    <button
+                        className="edit-btn"
+                        onClick={() =>
+                            navigate("/edit-event", {
+                                state: { event }
+                            })
+                        }
+                    >
                         Edit Event
                     </button>
 
-                    <button className="delete-btn">
+                    <button
+                        className="delete-btn"
+                        onClick={() =>
+                            navigate("/delete-event", {
+                                state: { event }
+                            })
+                        }
+                    >
                         Delete Event
                     </button>
-
                 </div>
             ) : (
                 <button
                     className="register-btn"
                     onClick={handleRegister}
+                    disabled={isRegistered}
                 >
-                    Register
+                    {isRegistered
+                        ? "Already Registered"
+                        : "Sign Up"}
                 </button>
             )}
 
