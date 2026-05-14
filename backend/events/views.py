@@ -32,10 +32,13 @@ class EventViewSet(viewsets.ModelViewSet):
         return self.queryset
 
     def get_permissions(self):
-        # DELETE is stricter: admin-only
-        if self.action == "destroy":
-            return [IsAuthenticated(), CanDeleteEvent()]
-        return [perm() for perm in self.permission_classes]
+            # DELETE is stricter: admin-only
+            if self.action == "destroy":
+                return [IsAuthenticated(), CanDeleteEvent()]
+            # Modification actions: update (PUT) and partial_update (PATCH)
+            if self.action in ["update", "partial_update"]:
+                return [IsAuthenticated(), CanEditEvent()]
+            return [perm() for perm in self.permission_classes]
 
     def perform_create(self, serializer):
         user = self.request.user
