@@ -13,6 +13,8 @@ import LoginStudents from './pages/LoginStudents'
 import LoginAdmin from './pages/LoginAdmin'
 import Signup from './pages/Signup'
 import Events from './pages/Events'
+import PasswordResetRequest from './pages/PasswordResetRequest'
+import PasswordResetConfirm from './pages/PasswordResetConfirm'
 
 function App() {
 
@@ -27,6 +29,8 @@ function App() {
         <Route path="/admin" element={<LoginAdmin />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/reset" element={<PasswordResetRequest />} />
+        <Route path="/reset-password" element={<PasswordResetConfirm />} />
       </Routes>
 
     </ BrowserRouter>
