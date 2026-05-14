@@ -7,7 +7,7 @@ import './App.css'
 
 // Custom Components
 import Navbar from './components/Navbar'
-import Home from './pages/Home'
+import LandingPage from './pages/LandingPage'
 import LoginForm from './components/LoginForm'
 import LoginStudents from './pages/LoginStudents'
 import LoginAdmin from './pages/LoginAdmin'
@@ -32,7 +32,7 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<LandingPage />} />
         
         <Route path="/login" element={<LoginStudents />} />
         <Route path="/admin" element={<LoginAdmin />} />
