@@ -36,24 +36,6 @@ function Events() {
         ...storedEvents
     ]);
 
-    const handleDelete = (eventTitle) => {
-
-        const updatedEvents = events.filter(
-            (event) => event.title !== eventTitle
-     );
-
-        setEvents(updatedEvents);
-
-        localStorage.setItem(
-            "events",
-            JSON.stringify(
-                updatedEvents.filter(
-                    (event) => event.id > 2
-                )
-            )
-        );
-    };
-
     return (
         <div className="events-page">
 
@@ -80,7 +62,6 @@ function Events() {
                     <EventCard
                         key={event.id}
                         event={event}
-                        onDelete={handleDelete}
                     />
                 ))}
 

@@ -2,7 +2,7 @@ import "./EventCard.css";
 import { isAuthenticated } from "../services/authService";
 import { useNavigate } from "react-router-dom";
 
-function EventCard({ event, onDelete }) {
+function EventCard({ event }) {
 
     const isAuth = isAuthenticated();
     const isAdmin = localStorage.getItem("isStaff") === "true";
@@ -40,7 +40,10 @@ function EventCard({ event, onDelete }) {
             </p>
 
             {!isAuth ? (
-                <button className="register-btn">
+                <button
+                    className="register-btn"
+                    onClick={() => navigate("/login")}
+                >
                     Login to Register
                 </button>
             ) : isAdmin ? (
@@ -59,11 +62,14 @@ function EventCard({ event, onDelete }) {
 
                     <button
                         className="delete-btn"
-                        onClick={() => onDelete(event.title)}
+                        onClick={() =>
+                            navigate("/delete-event", {
+                                state: { event }
+                            })
+                        }
                     >
                         Delete Event
                     </button>
-
                 </div>
             ) : (
                 <button

@@ -20,6 +20,8 @@ import EditEvent from "./pages/EditEvent";
 import RegisterEvent from "./pages/RegisterEvent";
 import RegistrationSuccess from "./pages/RegistrationSuccess";
 import MyEvents from "./pages/MyEvents";
+import DeleteEvent from "./pages/DeleteEvent";
+import DeleteSuccess from "./pages/DeleteSuccess";
 
 function App() {
 
@@ -41,6 +43,8 @@ function App() {
         <Route path="/register-event" element={<RegisterEvent />} />
         <Route path="/registration-success" element={<RegistrationSuccess />} />
         <Route path="/my-events" element={<MyEvents />} />
+        <Route path="/delete-event" element={<DeleteEvent />} />
+        <Route path="/delete-success" element={<DeleteSuccess />} />
       </Routes>
 
     </ BrowserRouter>
