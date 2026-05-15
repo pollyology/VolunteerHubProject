@@ -23,6 +23,7 @@
 .landing
 {
 	/* background-color: red; <-- For testing*/
+    background-color: white;
 	text-align: center;
 	padding: 40px 20px;
 }
@@ -30,6 +31,7 @@
 .landing h1 
 {
     font-size: 2rem;
+    color: black;
 	margin-bottom: 10px;
 }
 
@@ -45,6 +47,7 @@
 {
     font-size: 1.25rem;
 	margin-top: 20px;
+    color: black;
 	margin-bottom: 0px;
 }
 .events-list 
@@ -57,11 +60,26 @@
     flex-wrap: wrap;
 }
 
+.landing-event-card 
+{
+    width: 260px;
+    display: flex;
+}
+
 .landing-event-card .event-card
 {
-	margin-top: 20px;
-    width: 260px;
-    flex: 0 0 260px;
+    margin-top: 20px;
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.landing-event-card .register-btn
+{
+    margin-top: auto;
+    align-self: center;
 }
 
 .announcements-section
@@ -69,9 +87,10 @@
     margin-top: 40px;
 }
 
-.announcements-section h3
+/*.announcements-section h3
 {
     font-size: 1.25rem;
+    color: black;
     margin-bottom: 10px;
 }
 .announcement-card
@@ -89,11 +108,13 @@
 {
     font-size: 1.1rem;
     margin-top: 0;
+    color: black;
 }
 
 .announcement-card p
 {
 	width: 100%;
     font-size: 0.95rem;
+    color: black;
     margin-bottom: 0;
-}
+}*/

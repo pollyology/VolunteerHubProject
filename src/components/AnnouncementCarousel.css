@@ -1,0 +1,119 @@
+.announcements-section 
+{
+    margin-top: 40px;
+    text-align: center;
+}
+
+.announcements-section h3 
+{
+    font-size: 1.25rem;
+    color: black;
+    margin-bottom: 16px;
+}
+
+.announcement-carousel 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.announcement-card 
+{
+    background-color: #d9d9d9;
+
+    width: 500px;
+    min-height: 140px;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    text-align: left;
+
+    box-sizing: border-box;
+
+	 animation: slideFade 1s ease; /* Makes the announcement transition not as jarring */
+}
+
+		@keyframes slideFade 
+		{
+			from 
+			{
+				opacity: 0;
+				transform: translateX(15px);
+			}
+
+			to 
+			{
+				opacity: 1;
+				transform: translateX(0);
+			}
+		}
+
+.announcement-card h4 
+{
+    font-size: 1.1rem;
+    color: black;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.announcement-card p 
+{
+    font-size: 0.95rem;
+    color: black;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.announcement-arrow 
+{
+    border: none;
+    background: transparent;
+
+    font-size: 2rem;
+
+    cursor: pointer;
+
+    color: #555;
+
+    transition: 0.2s;
+}
+
+.announcement-arrow:hover 
+{
+    color: black;
+}
+
+.announcement-dots 
+{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    margin-top: 16px;
+}
+
+.dot 
+{
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    border: none;
+    padding: 0;
+
+    background-color: #bbb;
+
+    cursor: pointer;
+
+    display: inline-block;
+}
+
+.active-dot 
+{
+    background-color: #444;
+}
