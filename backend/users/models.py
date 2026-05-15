@@ -30,6 +30,12 @@ class User(AbstractUser):
         related_name="blocked_by",
     )
 
+    roles_choices = [
+        ('admin', 'Admin'),
+        ('volunteer', 'Volunteer'),
+    ]
+    role = models.CharField(max_length=20, choices=roles_choices, default='volunteer')
+
 
     def __str__(self):
         return self.username
