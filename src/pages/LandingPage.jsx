@@ -1,5 +1,6 @@
 import "./LandingPage.css"
 import EventCard from "../components/EventCard"
+import AnnouncementCarousel from "../components/AnnouncementCarousel";
 import { isAuthenticated } from "../services/authService";
 
 function LandingPage() {
@@ -22,24 +23,24 @@ function LandingPage() {
 	[
 		{
             id: 1,
-            title: "Event Title",
-            date: "March 19",
-            location: "CSU",
-            description: "Short description here"
+            title: "Battle at the Hive 4",
+            date: "May 8",
+            location: "The Nest",
+            description: "Volunteers needed for tabling and setting up."
         },
         {
             id: 2,
-            title: "Event Title",
-            date: "March 19",
-            location: "CSU",
-            description: "Short description here"
+            title: "5th Annual Beach Volleyball Tournament",
+            date: "May 14",
+            location: "Hornet Commons",
+            description: "Volunteers needed for handing out t-shirts and prizes."
         },
         {
             id: 3,
-            title: "Event Title",
-            date: "March 19",
-            location: "CSU",
-            description: "Short description here"
+            title: "River Clean Up",
+            date: "May 15",
+            location: "American River - Meet at Peak Adventures",
+            description: "Join Peak for our monthly clean-up of our section of the American River."
         }
 	]
 
@@ -65,17 +66,7 @@ function LandingPage() {
             ))}
 			</div>
 
-			<section className="announcements-section">
-				<h3>Announcements</h3>
-
-				<div className="announcement-card">
-					<h4>Announcement Title</h4>
-					<p>
-						New volunteer orientation will be held soon. Check back here for
-						important updates and reminders.
-					</p>
-				</div>
-			</section>
+			<AnnouncementCarousel />
 			
         </div>);
 }
